@@ -22,7 +22,7 @@ tipo** tipos_arrumados;
 int* tipos_na_gaveta;
 int* vpa_da_gaveta;
 int chapa_x, chapa_y, n_tipos, n_gavetas = 0;
-int melhor_valor_ate_agora;
+int melhor_valor_ate_agora = 0;
 
 void ler() {
 	tipo tipo_info;
@@ -46,10 +46,7 @@ void ler() {
 	}
 }
 
-int arrumar_gaveta(float vpa){
-	/*
-	Retorna o valor_por_area das pecas na gaveta
-	*/
+void arrumar_gaveta(float vpa){
 	tipo* gaveta;
 	int valor_max = 0, n_max = 0, valor_next = 0;
 	int i, j;
@@ -87,12 +84,29 @@ int arrumar_gaveta(float vpa){
 	tipos_na_gaveta[n_gavetas] = n_max;
 	vpa_da_gaveta[n_gavetas] = valor_max;
 	tipos_na_gaveta[++n_gavetas] = 0;
-	return valor_max;
 }
 
-int cortar() {}
+int cortar(tipo peca) {
+	int  n_pecas, area_sobra, valor_agora;
+
+	n_pecas = (chapa_x / peca.x) * (chapa_y / peca.y);
+	area_sobra = chapa_x * chapa_y - peca.x * peca.y * n_pecas;
+	valor_agora = peca.valor * n_pecas;
+	if (melhor_valor_ate_agora < valor_agora) {
+		melhor_valor_ate_agora = valor_agora;
+	}
+	return area_sobra;
+}
 
 int main() {
+	int i;
+
 	ler();
-	
+	arrumar_gaveta(NULL);
+	for (i = 0; i < tipos_na_gaveta[0]; i++) {
+		if (cortar(tipos_arrumados[0][0]) == 0) {
+			printf("%d\n", melhor_valor_ate_agora);
+			return 0;
+		}
+	}
 }
