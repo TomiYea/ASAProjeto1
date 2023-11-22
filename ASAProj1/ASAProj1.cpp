@@ -110,6 +110,7 @@ int cortar_com_um_tipo(tipo peca, list<tipo>* pecas_usadas) {
 
 int montagem(list<tipo> pecas_usadas, tipo nova_peca) {
 	//pecas usadas cabem 100% garantia
+	//usar next bellow
 	int i;
 
 	if (chapa_x < nova_peca.x || chapa_y < nova_peca.y) {
