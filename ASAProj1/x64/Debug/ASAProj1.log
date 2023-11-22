@@ -1,2 +1,8 @@
 ﻿  ASAProj1.cpp
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(40,46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(57,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(60,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(68,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(71,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(78,39): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   ASAProj1.vcxproj -> C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\x64\Debug\ASAProj1.exe
