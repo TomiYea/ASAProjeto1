@@ -108,12 +108,15 @@ int cortar_com_um_tipo(tipo peca, list<tipo>* pecas_usadas) {
 	return area_sobra;
 }
 
-int montagem(list<tipo> pecas_usadas, tipo nova_peca) {
+int montagem(list<tipo> pecas_usadas, tipo nova_peca, int area_sobra_ant) {
 	//pecas usadas cabem 100% garantia
 	//usar next bellow
 	int i;
 
 	if (chapa_x < nova_peca.x || chapa_y < nova_peca.y) {
+		return -1;
+	}
+	if (nova_peca.x * nova_peca.y > area_sobra_ant) {
 		return -1;
 	}
 	if (!pecas_usadas.empty()) {
@@ -136,7 +139,7 @@ void cortar_tentar_preencher(list<tipo> pecas_usadas,tipo nova_peca, int area_so
 	for (i; area_sobra_ant * vpa_da_gaveta[i] > melhor_valor_ate_agora; i++) {
 		for (j; j < n_tipos_na_gaveta[i]; j++) {
 			teste = tipos_arrumados[i][j];
-			area_sobra = montagem(pecas_usadas, teste);
+			area_sobra = montagem(pecas_usadas, teste, area_sobra_ant);
 			if (area_sobra > 0) {
 				if (melhor_valor_ate_agora < valor_ant + teste.valor) {
 					melhor_valor_ate_agora = valor_ant + teste.valor;
@@ -175,7 +178,7 @@ void cortar_substituir(list<tipo> pecas_usadas, int area_sobra_ant, int valor_an
 		else { j = j_inicio + 1; first_time = false; }
 		for (j; j < n_tipos_na_gaveta[i]; j++) {
 			teste = tipos_arrumados[i][j];
-			area_sobra = montagem(pecas_usadas, teste);
+			area_sobra = montagem(pecas_usadas, teste, area_sobra_ant);
 			if (area_sobra > 0) {
 				if (melhor_valor_ate_agora < valor_ant + teste.valor) {
 					melhor_valor_ate_agora = valor_ant + teste.valor;
