@@ -8,13 +8,21 @@
 
 using namespace std;
 
-typedef struct tipo tipo; 
+typedef struct tipo tipo;
+typedef struct canto canto;
 
 struct tipo {
 	int x;
 	int y;
 	int valor;
 	float valor_por_area;
+};
+
+struct canto {
+	int x;
+	int y;
+	int lim_x;
+	int lim_y;
 };
 
 tipo* todos_tipos;
@@ -47,6 +55,15 @@ void ler() {
 		todos_tipos[i].x = todos_tipos[i].y;
 		todos_tipos[i].y = aux;
 	}
+}
+
+canto criar_canto(int x, int y) {
+	canto c;
+	c.x = x;
+	c.y = y;
+	c.lim_x = chapa_x;
+	c.lim_y = chapa_y;
+	return c;
 }
 
 void arrumar_gaveta(float vpa){
@@ -108,9 +125,33 @@ int cortar_com_um_tipo(tipo peca, list<tipo>* pecas_usadas) {
 	return area_sobra;
 }
 
+int por_nos_cantos(list<tipo> pecas_usadas, list<canto> cantos, canto canto_ant, list<canto>::const_iterator canto_ant_pos) {
+	tipo peca;
+	canto c1, c2;
+	
+	peca = pecas_usadas.front();
+	if (canto_ant.x + peca.x > canto_ant.lim_x|| canto_ant.y + peca.y > canto_ant.lim_y) {
+		return -1;
+	}
+	pecas_usadas.pop_front();
+	if (!pecas_usadas.empty()) {
+		c1 = criar_canto(canto_ant.x + peca.x, canto_ant.y);
+		c2 = criar_canto(canto_ant.x, canto_ant.y + peca.y);
+		cantos.insert(canto_ant_pos, c1);
+		cantos.insert(canto_ant_pos, c2);
+		cantos.erase(canto_ant_pos);
+		for (canto c : cantos) {
+			
+		}
+	}
+}
+
 int montagem(list<tipo> pecas_usadas, tipo nova_peca, int area_sobra_ant) {
 	//pecas usadas cabem 100% garantia
 	//usar next bellow
+	list<canto> cantos;
+	canto c = criar_canto(0, 0);
+	int area_sobra;
 	int i;
 
 	if (chapa_x < nova_peca.x || chapa_y < nova_peca.y) {
@@ -120,11 +161,9 @@ int montagem(list<tipo> pecas_usadas, tipo nova_peca, int area_sobra_ant) {
 		return -1;
 	}
 	if (!pecas_usadas.empty()) {
-		for (i = 0; !pecas_usadas.empty(); i++) {
-			if (i > 0) {
-
-			}
-		}
+		pecas_usadas.push_back(nova_peca);
+		cantos.push_back(c);
+		return por_nos_cantos(pecas_usadas, cantos, c, cantos.begin());
 	}
 	else {
 		return (chapa_area - nova_peca.x * nova_peca.y);
