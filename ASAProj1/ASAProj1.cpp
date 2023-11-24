@@ -30,7 +30,8 @@ tipo** tipos_arrumados;
 bool tudo_arrumado = false;
 int* n_tipos_na_gaveta;
 int* vpa_da_gaveta;
-int chapa_x, chapa_y, chapa_area, n_tipos, n_gavetas = 0;
+double chapa_x, chapa_area;
+int chapa_y, n_tipos, n_gavetas = 0;
 int melhor_valor_ate_agora = 0;
 int i_inicio, j_inicio;
 
@@ -77,7 +78,7 @@ void arrumar_gaveta(float vpa){
 				valor_max = todos_tipos[i].valor_por_area;
 				n_max = 1;
 			}
-			else if (valor_max = todos_tipos[i].valor_por_area) {
+			else if (valor_max == todos_tipos[i].valor_por_area) {
 				n_max++;
 			}
 		}
@@ -88,7 +89,7 @@ void arrumar_gaveta(float vpa){
 				valor_max = todos_tipos[i].valor_por_area;
 				n_max = 1;
 			}
-			else if (valor_max = todos_tipos[i].valor_por_area) {
+			else if (valor_max == todos_tipos[i].valor_por_area) {
 				n_max++;
 			}
 		}
@@ -286,7 +287,7 @@ void cortar_substituir(list<tipo> pecas_usadas, int area_sobra_ant, int valor_an
 				arrumar_gaveta(vpa_da_gaveta[i]);
 			}
 			else {
-				return;
+				break;
 			}
 		}
 	}
@@ -306,7 +307,6 @@ void cortar() {
 		for (j = 0; n_tipos_na_gaveta[i] > j && melhor_valor_ate_agora == 0; j++) {
 			area_sobra = cortar_com_um_tipo(tipos_arrumados[i][j], &tipos_usados);
 			if (area_sobra == 0) {
-				printf("%d\n", melhor_valor_ate_agora);
 				return;
 			}
 		}
@@ -315,7 +315,6 @@ void cortar() {
 				arrumar_gaveta(vpa_da_gaveta[i]);
 			}
 			else {
-				printf("%d\n", 0);
 				return;
 			}
 		}
@@ -346,11 +345,12 @@ void cortar() {
 				arrumar_gaveta(vpa_da_gaveta[i]);
 			}
 			else {
-				return;
+				break;
 			}
 		}
 	}
 	cortar_substituir(tipos_usados, area_sobra, valor_ant);
+
 }
 
 int main() {
@@ -358,4 +358,7 @@ int main() {
 
 	ler();
 	arrumar_gaveta(NULL);
+	cortar();
+	printf("%d", melhor_valor_ate_agora);
+	return 0;
 }
