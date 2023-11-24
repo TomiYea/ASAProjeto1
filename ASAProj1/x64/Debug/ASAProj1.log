@@ -1,17 +1,15 @@
 ﻿  ASAProj1.cpp
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(42,10): warning C4477: 'scanf_s': a cadeia de formato '%d' requer um argumento do tipo 'int *', mas um argumento variadic 1 tem o tipo 'double *'
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(52,46): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(65,12): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(78,31): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(89,31): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(99,39): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(117,31): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(118,26): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(202,6): warning C4101: 'area_sobra': variável local não referenciada
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(203,6): warning C4101: 'i': variável local não referenciada
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(249,35): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(287,35): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(315,35): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(345,35): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(357,6): warning C4101: 'i': variável local não referenciada
-  ASAProj1.vcxproj -> C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\x64\Debug\ASAProj1.exe
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(52,46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(65,12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(78,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(89,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(117,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(118,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(202,6): warning C4101: 'area_sobra': unreferenced local variable
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(203,6): warning C4101: 'i': unreferenced local variable
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(249,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(287,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(315,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(345,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\ASAProj1\ASAProj1.cpp(357,6): warning C4101: 'i': unreferenced local variable
+  ASAProj1.vcxproj -> C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\x64\Debug\ASAProj1.exe
