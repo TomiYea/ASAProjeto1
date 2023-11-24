@@ -110,7 +110,7 @@ void arrumar_gaveta(float vpa){
 }
 
 int cortar_com_um_tipo(tipo peca, list<tipo>* pecas_usadas) {
-	int  n_pecas, area_sobra, valor_agora;
+	int n_pecas, area_sobra, valor_agora;
 	int i;
 
 	n_pecas = (chapa_x / peca.x) * (chapa_y / peca.y);
@@ -125,25 +125,72 @@ int cortar_com_um_tipo(tipo peca, list<tipo>* pecas_usadas) {
 	return area_sobra;
 }
 
-int por_nos_cantos(list<tipo> pecas_usadas, list<canto> cantos, canto canto_ant, list<canto>::const_iterator canto_ant_pos) {
+bool por_nos_cantos(list<tipo> pecas_usadas, list<canto> cantos, canto canto_ant, int n_pos) {
 	tipo peca;
-	canto c1, c2;
 	
 	peca = pecas_usadas.front();
 	if (canto_ant.x + peca.x > canto_ant.lim_x|| canto_ant.y + peca.y > canto_ant.lim_y) {
-		return -1;
+		return false;
 	}
 	pecas_usadas.pop_front();
 	if (!pecas_usadas.empty()) {
+		canto c1, c2;
+		int i;
+		auto canto_ant_pos = cantos.begin();
+		for (i = 0; i < n_pos; i++) {
+			canto_ant_pos++;
+		}
 		c1 = criar_canto(canto_ant.x + peca.x, canto_ant.y);
 		c2 = criar_canto(canto_ant.x, canto_ant.y + peca.y);
 		cantos.insert(canto_ant_pos, c1);
 		cantos.insert(canto_ant_pos, c2);
-		cantos.erase(canto_ant_pos);
-		for (canto c : cantos) {
-			
+		auto canto_aux_pos = canto_ant_pos;
+		canto_ant_pos--;
+		cantos.erase(canto_aux_pos);
+		canto_aux_pos = --canto_ant_pos;
+		//ajustar limites doutros cantos
+		//proprios limites
+		//mover o canto no sitio certo
+		for (i/*= n_pos*/; i > 0; i--) {
+			canto_aux_pos--;
+			if (canto_aux_pos->x < c1.x) {
+				canto_aux_pos->lim_y = c1.y;
+				canto_ant_pos->y = canto_aux_pos->y;
+			}
+			else if (canto_aux_pos->x == c1.x) {
+				cantos.erase(canto_aux_pos);
+				break;
+			}
+			else {
+				break;
+			}
 		}
+		canto_aux_pos = ++canto_ant_pos;
+		for (i = n_pos + 2; i < cantos.size(); i++) {
+			canto_aux_pos++;
+			if (canto_aux_pos->y < c2.y) {
+				canto_aux_pos->lim_x = c2.x;
+				canto_ant_pos->x = canto_aux_pos->x;
+			}
+			else if (canto_aux_pos->x == c2.x) {
+				cantos.erase(canto_aux_pos);
+				break;
+			}
+			else {
+				break;
+			}
+		}
+		//acho que funcemina
+		n_pos = 0;
+		for (canto c : cantos) {
+			if (por_nos_cantos(pecas_usadas, cantos, c, n_pos)) {
+				return true;
+			}
+			n_pos++;
+		}
+		return false;
 	}
+	return true;
 }
 
 int montagem(list<tipo> pecas_usadas, tipo nova_peca, int area_sobra_ant) {
@@ -163,19 +210,23 @@ int montagem(list<tipo> pecas_usadas, tipo nova_peca, int area_sobra_ant) {
 	if (!pecas_usadas.empty()) {
 		pecas_usadas.push_back(nova_peca);
 		cantos.push_back(c);
-		return por_nos_cantos(pecas_usadas, cantos, c, cantos.begin());
+		if (por_nos_cantos(pecas_usadas, cantos, c, 0)) {
+			return area_sobra_ant - (nova_peca.x * nova_peca.y);
+		}
+		return -1;
 	}
-	else {
-		return (chapa_area - nova_peca.x * nova_peca.y);
-	}
+	return area_sobra_ant - (nova_peca.x * nova_peca.y);
 }
 
 void cortar_tentar_preencher(list<tipo> pecas_usadas,tipo nova_peca, int area_sobra_ant, int valor_ant, int i, int j) {
 	tipo teste;
 	int area_sobra;
+	bool first_time = true;
 
 	pecas_usadas.push_back(nova_peca);
 	for (i; area_sobra_ant * vpa_da_gaveta[i] > melhor_valor_ate_agora; i++) {
+		if (!first_time) { j = 0; }
+		else { first_time = false; }
 		for (j; j < n_tipos_na_gaveta[i]; j++) {
 			teste = tipos_arrumados[i][j];
 			area_sobra = montagem(pecas_usadas, teste, area_sobra_ant);
@@ -246,11 +297,15 @@ void cortar_substituir(list<tipo> pecas_usadas, int area_sobra_ant, int valor_an
 
 void cortar() {
 	list<tipo> tipos_usados;
+	tipo teste;
+	int area_sobra, valor_ant;
+	bool first_time = true;
 	int i, j;
 
 	for (i = 0; melhor_valor_ate_agora == 0; i++) {
 		for (j = 0; n_tipos_na_gaveta[i] > j && melhor_valor_ate_agora == 0; j++) {
-			if (cortar_com_um_tipo(tipos_arrumados[i][j], &tipos_usados) == 0) {
+			area_sobra = cortar_com_um_tipo(tipos_arrumados[i][j], &tipos_usados);
+			if (area_sobra == 0) {
 				printf("%d\n", melhor_valor_ate_agora);
 				return;
 			}
@@ -260,12 +315,42 @@ void cortar() {
 				arrumar_gaveta(vpa_da_gaveta[i]);
 			}
 			else {
+				printf("%d\n", 0);
 				return;
 			}
 		}
 	}
 	i_inicio = i;
 	j_inicio = j;
+	valor_ant = melhor_valor_ate_agora;
+	for (i = i_inicio; area_sobra * vpa_da_gaveta[i] > melhor_valor_ate_agora; i++) {
+		if (!first_time) { j = 0; }
+		else { j = j_inicio + 1; first_time = false; }
+		for (j; j < n_tipos_na_gaveta[i]; j++) {
+			teste = tipos_arrumados[i][j];
+			area_sobra = montagem(tipos_usados, teste, area_sobra);
+			if (area_sobra > 0) {
+				if (melhor_valor_ate_agora < valor_ant + teste.valor) {
+					melhor_valor_ate_agora = valor_ant + teste.valor;
+				}
+				cortar_tentar_preencher(tipos_usados, teste, area_sobra, valor_ant + teste.valor, i, j);
+			}
+			else if (area_sobra == 0) {
+				if (melhor_valor_ate_agora < valor_ant + teste.valor) {
+					melhor_valor_ate_agora = valor_ant + teste.valor;
+				}
+			}
+		}
+		if (i + 1 == n_gavetas) {
+			if (!tudo_arrumado) {
+				arrumar_gaveta(vpa_da_gaveta[i]);
+			}
+			else {
+				return;
+			}
+		}
+	}
+	cortar_substituir(tipos_usados, area_sobra, valor_ant);
 }
 
 int main() {
