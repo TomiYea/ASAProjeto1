@@ -18,5 +18,11 @@
     <ClCompile Include="ASAProj1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ASAProj1Din.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ASAProj1Din.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
