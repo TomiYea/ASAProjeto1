@@ -1,17 +1,3 @@
-﻿  ASAProj1.cpp
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(65,12): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(118,31): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(119,26): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(120,27): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(355,41): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(357,72): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(361,41): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(383,34): warning C4244: '-=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(394,41): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(396,72): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(400,41): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(425,15): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(454,41): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(456,72): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
-C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\ASAProj1\ASAProj1.cpp(460,41): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-  ASAProj1.vcxproj -> C:\Users\Tomás Monteiro\Documents\GitHub\ASAProjeto1\x64\Debug\ASAProj1.exe
+﻿x64\Debug\ASAProj1Din.obj : warning LNK4042: object specified more than once; extras ignored
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\Users\tomas\source\repos\ASAProj1\ASAProjeto1\x64\Debug\ASAProj1.exe : fatal error LNK1120: 1 unresolved externals

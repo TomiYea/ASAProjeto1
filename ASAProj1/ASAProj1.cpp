@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <array>
@@ -220,7 +220,7 @@ int cortar_com_um_tipo(tipo peca, list<tipo>* pecas_usadas) {
 		return false;
 	}
 	return true;
-}*/
+}*//*
 
 bool guilhotina(list<tipo> pecas_usadas, list<canto> cantos, canto canto_ant, int n_pos) {
 	tipo peca;
@@ -344,10 +344,10 @@ void cortar_tentar_preencher(list<tipo> pecas_usadas,tipo nova_peca, int area_so
 	bool first_time = true;
 
 	pecas_usadas.push_back(nova_peca);
-	for (/*i*/; area_sobra_ant * vpa_da_gaveta[i] > melhor_valor_ate_agora - valor_ant; i++) {
+	for (/*i*//*; area_sobra_ant* vpa_da_gaveta[i] > melhor_valor_ate_agora - valor_ant; i++) {
 		if (!first_time) { j = 0; }
 		else { first_time = false; }
-		for (/*j*/; j < n_tipos_na_gaveta[i]; j++) {
+		for (/*j*//*; j < n_tipos_na_gaveta[i]; j++) {
 			teste = tipos_arrumados[i][j];
 			area_sobra = montagem(pecas_usadas, teste, area_sobra_ant);
 			if (area_sobra > 0) {
@@ -386,7 +386,7 @@ void cortar_substituir(list<tipo> pecas_usadas, int area_sobra_ant, int valor_an
 	for (i = i_inicio; area_sobra_ant * vpa_da_gaveta[i] > melhor_valor_ate_agora - valor_ant; i++) {
 		if (!first_time) { j = 0; }
 		else { j = j_inicio + 1; first_time = false; }
-		for (/*j*/; j < n_tipos_na_gaveta[i]; j++) {
+		for (/*j*//*; j < n_tipos_na_gaveta[i]; j++) {
 			teste = tipos_arrumados[i][j];
 			area_sobra = montagem(pecas_usadas, teste, area_sobra_ant);
 			if (area_sobra > 0) {
@@ -443,10 +443,10 @@ void cortar() {
 	i--;
 	valor_ant = melhor_valor_ate_agora;
 	area_ant = area_sobra;
-	for (/*i*/; (area_ant * vpa_da_gaveta[i]) > (melhor_valor_ate_agora - valor_ant); i++) {
+	for (/*i*//*; (area_ant* vpa_da_gaveta[i]) > (melhor_valor_ate_agora - valor_ant); i++) {
 		if (!first_time) { j = 0; }
 		else {first_time = false; }
-		for (/*j*/; j < n_tipos_na_gaveta[i]; j++) {
+		for (/*j*//*; j < n_tipos_na_gaveta[i]; j++) {
 			teste = tipos_arrumados[i][j];
 			area_sobra = montagem(tipos_usados, teste, area_ant);
 			if (area_sobra > 0) {
@@ -479,4 +479,4 @@ int main() {
 	arrumar_gaveta(-1);
 	cortar();
 	printf("%d\n", melhor_valor_ate_agora);
-}
+}*/
